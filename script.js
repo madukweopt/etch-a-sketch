@@ -19,3 +19,12 @@ function createGrid (gridNum) {
 
 }
 createGrid(70);
+
+const allCells = document.querySelectorAll('.cell');
+    for (let grid of allCells) {
+        grid.addEventListener('mouseenter', function() {
+            grid.style.backgroundColor = 'black';
+        })
+
+    }
+
