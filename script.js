@@ -18,7 +18,7 @@ function createGrid (gridNum) {
 }
 
 }
-createGrid(70);
+createGrid(16);
 
 const allCells = document.querySelectorAll('.cell');
     for (let grid of allCells) {
@@ -27,4 +27,21 @@ const allCells = document.querySelectorAll('.cell');
         })
 
     }
+    const btn = document.querySelector('.btn');
+    btn.addEventListener('click', function() {
+        let gridNum = Number(prompt('enter number of grids to display'))
+        if (gridNum > 100){
+        alert('enter number less than 100');
+        return;
+
+        } else if (gridNum <= 100) {
+        clearGrid();
+        createGrid(gridNum);
+        }
+    })
+
+    function clearGrid() {
+        container.innerHTML = '';
+    }
+
 
