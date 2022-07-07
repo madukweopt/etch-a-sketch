@@ -27,7 +27,7 @@ function createGrid (gridNum) {
 }
 
 createGrid(16);
-
+changeColor();
 
 function changeColor() {
 const allCells = document.querySelectorAll('.cell');
@@ -60,6 +60,16 @@ function clearGrid() {
 
 
 function formatGrid() {
+    const allCells = document.querySelectorAll('.cell');
+    for (let grid of allCells) {
+        grid.style.backgroundColor = '#faf9f6';
+        
+  }
+ }  
+
+resetGrid.addEventListener('click', formatGrid);
+
+    function formatGrid() {
     const allCells = document.querySelectorAll('.cell');
     for (let grid of allCells) {
         grid.style.backgroundColor = '#faf9f6';
