@@ -1,6 +1,13 @@
 const container = document.querySelector('.container');
 const resetGrid = document.querySelector('.reset-btn');
+const btn = document.querySelector('.change-btn');
+const startBtn = document.querySelector('.start-btn');
 
+btn.addEventListener('click', changeGrid);
+resetGrid.addEventListener('click', formatGrid);
+startBtn.addEventListener('click', changeColor);
+
+// Creates grid rows and grid boxes, and appends the boxes inside the rows.
 function createGrid (gridNum) {
     for (let i = 0; i < gridNum; i++) {
         const rows = document.createElement('div');
@@ -16,11 +23,11 @@ function createGrid (gridNum) {
     }
     
     container.appendChild(rows);
+  }
 }
 
-}
 createGrid(16);
-changeColor();
+
 
 function changeColor() {
 const allCells = document.querySelectorAll('.cell');
@@ -32,26 +39,27 @@ const allCells = document.querySelectorAll('.cell');
 
     }
 }
-    const btn = document.querySelector('.change-btn');
-    btn.addEventListener('click', function() {
-        let gridNum = Number(prompt('enter number of grids to display: less than 100'))
-        if (gridNum > 100){
-        alert('enter number less than 100');
 
-        } else if (gridNum <= 100) {
-        clearGrid();
-        createGrid(gridNum);
-        changeColor()
+ function changeGrid() {
+    let gridNum = Number(prompt('enter number of grids to display: less than 100'));
+        while (gridNum > 100 || gridNum == ''){
+           gridNum = Number(prompt('must input a number less than 100'))
+        
+         } if (gridNum <= 100) {
+           clearGrid();
+           createGrid(gridNum);
+        
+
+          }     
+ }
+
+function clearGrid() {
+        container.innerHTML = ''; 
+
         }
-    })
 
-    function clearGrid() {
-        container.innerHTML = '';
-    }
 
-resetGrid.addEventListener('click', formatGrid);
-
-    function formatGrid() {
+function formatGrid() {
     const allCells = document.querySelectorAll('.cell');
     for (let grid of allCells) {
         grid.style.backgroundColor = '#faf9f6';

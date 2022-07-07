@@ -18,12 +18,15 @@ body {
 }
 
 .reset-btn,
-.change-btn {    
+.change-btn,
+.start-btn {    
     background-color: hsla(9, 94%, 51%, 0.604);
-    padding: 8px;
+    padding: 5px;
     font-size: 27px;
     border-radius: 8px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: solid black 2px;
+    width: 7em;
+    color: white;
     
 }
 
