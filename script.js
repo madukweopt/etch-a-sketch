@@ -2,6 +2,8 @@ const container = document.querySelector('.container');
 const resetGrid = document.querySelector('.reset-btn');
 const btn = document.querySelector('.change-btn');
 const startBtn = document.querySelector('.start-btn');
+let colorTrigger = false;
+
 
 btn.addEventListener('click', changeGrid);
 resetGrid.addEventListener('click', formatGrid);
@@ -21,22 +23,28 @@ function createGrid (gridNum) {
         cells.style.height = `${heightAndWidth}px`;
         rows.appendChild(cells); 
     }
-    
     container.appendChild(rows);
+
   }
 }
 
 createGrid(16);
 
-
 function changeColor() {
 const allCells = document.querySelectorAll('.cell');
     for (let grid of allCells) {
-        grid.addEventListener('mouseenter', function() {
-            grid.style.backgroundColor = 'black';
-            
+        grid.addEventListener('mousedown', function() {
+            colorTrigger = true;   
         })
 
+        grid.addEventListener('mouseup', function() {
+            colorTrigger = false;
+        })
+        
+        grid.addEventListener('mousemove', function() {
+            if(colorTrigger)
+            grid.style.backgroundColor = 'black';
+        })
     }
 }
 
@@ -45,29 +53,25 @@ const allCells = document.querySelectorAll('.cell');
         while (gridNum > 100 || gridNum == ''){
            gridNum = Number(prompt('must input a number less than 100'))
         
-         } if (gridNum <= 100) {
-           clearGrid();
-           createGrid(gridNum);
+           } if (gridNum <= 100) {
+            clearGrid();
+            createGrid(gridNum);
         
-
-          }     
+   }     
  }
 
 function clearGrid() {
         container.innerHTML = ''; 
 
-        }
-
+ }
 
 function formatGrid() {
     const allCells = document.querySelectorAll('.cell');
     for (let grid of allCells) {
-        grid.style.backgroundColor = '#faf9f6';
-        
+        grid.style.backgroundColor = '#faf9f6';  
+
   }
  }  
-
-resetGrid.addEventListener('click', formatGrid);
 
     function formatGrid() {
     const allCells = document.querySelectorAll('.cell');
