@@ -2,12 +2,16 @@ const container = document.querySelector('.container');
 const resetGrid = document.querySelector('.reset-btn');
 const btn = document.querySelector('.change-btn');
 const startBtn = document.querySelector('.start-btn');
+const rainbowBtn = document.querySelector('.rainbow-btn')
 let colorTrigger = false;
 
 
 btn.addEventListener('click', changeGrid);
 resetGrid.addEventListener('click', formatGrid);
 startBtn.addEventListener('click', changeColor);
+container.addEventListener('mousedown', () =>  colorTrigger = true);   
+container.addEventListener('mouseup', () => colorTrigger = false); 
+
 
 // Creates grid rows and grid boxes, and appends the boxes inside the rows.
 function createGrid (gridNum) {
@@ -33,14 +37,6 @@ createGrid(16);
 function changeColor() {
 const allCells = document.querySelectorAll('.cell');
     for (let grid of allCells) {
-        grid.addEventListener('mousedown', function() {
-            colorTrigger = true;   
-        })
-
-        grid.addEventListener('mouseup', function() {
-            colorTrigger = false;
-        })
-        
         grid.addEventListener('mousemove', function() {
             if(colorTrigger)
             grid.style.backgroundColor = 'black';
@@ -48,7 +44,7 @@ const allCells = document.querySelectorAll('.cell');
     }
 }
 
- function changeGrid() {
+function changeGrid() {
     let gridNum = Number(prompt('enter number of grids to display: less than 100'));
         while (gridNum > 100 || gridNum == ''){
            gridNum = Number(prompt('must input a number less than 100'))
@@ -73,12 +69,33 @@ function formatGrid() {
   }
  }  
 
-    function formatGrid() {
+function formatGrid() {
     const allCells = document.querySelectorAll('.cell');
     for (let grid of allCells) {
         grid.style.backgroundColor = '#faf9f6';
         
   }
- }  
+ } 
+ 
+function rainbowColors() {
+    const r = Math.floor(Math.random() * 255);
+    const g = Math.floor(Math.random() * 255);
+    const b = Math.floor(Math.random() * 255);
+    return `rgb(${r}, ${g}, ${b})`;
+
+}
+
+rainbowBtn.addEventListener('click', addRainbowColors);
+
+function addRainbowColors() {
+    const allCells = document.querySelectorAll('.cell');
+    for (let cells of allCells) {
+        cells.addEventListener('mousemove', function() {
+            if (colorTrigger)
+            cells.style.backgroundColor = rainbowColors();
+        })
+    }
+}
+
 
 
