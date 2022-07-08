@@ -27,7 +27,7 @@ function createGrid (gridNum) {
 }
 
 createGrid(16);
-changeColor();
+
 
 function changeColor() {
 const allCells = document.querySelectorAll('.cell');
