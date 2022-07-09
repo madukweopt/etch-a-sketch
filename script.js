@@ -1,3 +1,7 @@
+// I have two bugs in this code which i could'nt fix yet
+// 1. misbehaving of the mouse when mousedown inside the grid.
+// 2. static nature of the buttons.
+
 const container = document.querySelector('.container');
 const resetGrid = document.querySelector('.reset-btn');
 const btn = document.querySelector('.change-btn');
@@ -9,7 +13,7 @@ let colorTrigger = false;
 
 btn.addEventListener('click', changeGrid);
 resetGrid.addEventListener('click', formatGrid);
-blackBtn.addEventListener('click', changeColor);
+blackBtn.addEventListener('click', blackColor);
 container.addEventListener('mousedown', () =>  colorTrigger = true);   
 container.addEventListener('mouseup', () => colorTrigger = false); 
 eraseBtn.addEventListener('click', erase);
@@ -35,7 +39,7 @@ function createGrid (gridNum) {
 
 createGrid(16);
 
-function changeColor() {
+function blackColor() {
 const allCells = document.querySelectorAll('.cell');
     for (let grid of allCells) {
         grid.addEventListener('mousemove', function() {
@@ -84,7 +88,7 @@ function addRainbowColors() {
     const allCells = document.querySelectorAll('.cell');
     for (let cells of allCells) {
         cells.addEventListener('mousemove', function() {
-            if (colorTrigger)
+            if (colorTrigger) 
             cells.style.backgroundColor = rainbowColors();
         })
     }
@@ -92,13 +96,13 @@ function addRainbowColors() {
 
 function erase() {
     const allCells = document.querySelectorAll('.cell')
-    for (let cells of allCells)
+    for (let cells of allCells) {
     cells.addEventListener('mousemove', function() {
         if(colorTrigger)
         cells.style.backgroundColor = '#faf9f6';
     })
     
 }
-
+}
 
 
