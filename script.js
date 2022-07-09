@@ -1,17 +1,18 @@
 const container = document.querySelector('.container');
 const resetGrid = document.querySelector('.reset-btn');
 const btn = document.querySelector('.change-btn');
-const startBtn = document.querySelector('.start-btn');
+const blackBtn = document.querySelector('.black-btn');
 const rainbowBtn = document.querySelector('.rainbow-btn')
+const eraseBtn = document.querySelector('.erase-btn');
 let colorTrigger = false;
 
 
 btn.addEventListener('click', changeGrid);
 resetGrid.addEventListener('click', formatGrid);
-startBtn.addEventListener('click', changeColor);
+blackBtn.addEventListener('click', changeColor);
 container.addEventListener('mousedown', () =>  colorTrigger = true);   
 container.addEventListener('mouseup', () => colorTrigger = false); 
-
+eraseBtn.addEventListener('click', erase);
 
 // Creates grid rows and grid boxes, and appends the boxes inside the rows.
 function createGrid (gridNum) {
@@ -22,7 +23,7 @@ function createGrid (gridNum) {
         for (let j = 0; j < gridNum; j++) {
         const cells = document.createElement('div');
         cells.classList.add('cell'); 
-        let heightAndWidth = 500/gridNum;
+        let heightAndWidth = 600/gridNum;
         cells.style.width = `${heightAndWidth}px`;
         cells.style.height = `${heightAndWidth}px`;
         rows.appendChild(cells); 
@@ -68,14 +69,6 @@ function formatGrid() {
 
   }
  }  
-
-function formatGrid() {
-    const allCells = document.querySelectorAll('.cell');
-    for (let grid of allCells) {
-        grid.style.backgroundColor = '#faf9f6';
-        
-  }
- } 
  
 function rainbowColors() {
     const r = Math.floor(Math.random() * 255);
@@ -95,6 +88,16 @@ function addRainbowColors() {
             cells.style.backgroundColor = rainbowColors();
         })
     }
+}
+
+function erase() {
+    const allCells = document.querySelectorAll('.cell')
+    for (let cells of allCells)
+    cells.addEventListener('mousemove', function() {
+        if(colorTrigger)
+        cells.style.backgroundColor = '#faf9f6';
+    })
+    
 }
 
 

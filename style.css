@@ -1,44 +1,53 @@
 body {
-    background-color: rgb(128, 79, 0);
+    background-color: rgb(207, 215, 233);
 }
 
 .main-container {
     display: flex;
-    flex-direction: column;
-    gap: 3em;
+    justify-content: center;
     align-items: center;
+    margin-top: 2.5em;
+    gap: 3em;
+    margin-right: 5em;
     
 }
 
 .btn-container {
     display: flex;
-    gap: 3em;
-    margin-top: 15px;
-    padding: 8px;
+    flex-direction: column;
+    gap: 5em;
+
 }
 
 .reset-btn,
 .change-btn,
-.start-btn,
-.rainbow-btn {    
-    background-color: hsla(9, 94%, 51%, 0.604);
+.black-btn,
+.rainbow-btn,
+.erase-btn {    
+    background-color: rgba(2, 34, 37, 0.912);
     padding: 5px;
-    font-size: 27px;
+    font-size: 16px;
     border-radius: 8px;
     border: solid black 2px;
     width: 6em;
     color: white;
+    color: red;
     
 }
 
 .container {
     display: flex;
-    width: 500px;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    border: solid black 5px;
 
 }
+
 
 .cell {
     border: solid black 1px;
     background-color: #faf9f6;
     box-sizing: border-box;
+    cursor: crosshair;
 }
