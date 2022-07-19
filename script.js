@@ -1,5 +1,5 @@
 // I have two bugs in this code which i could'nt fix yet
-// 1. misbehaving of the mouse when mousedown inside the grid.
+// 1. misbehavior of the mouse when mousedown inside the grid.
 // 2. static nature of the buttons.
 
 const container = document.querySelector('.container');
