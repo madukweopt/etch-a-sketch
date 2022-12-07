@@ -27,9 +27,9 @@ function createGrid (gridNum) {
         for (let j = 0; j < gridNum; j++) {
         const cells = document.createElement('div');
         cells.classList.add('cell'); 
-        let heightAndWidth = 600/gridNum;
-        cells.style.width = `${heightAndWidth}px`;
-        cells.style.height = `${heightAndWidth}px`;
+        let heightAndWidth = 60/gridNum;
+        cells.style.width = `${heightAndWidth}vw`;
+        cells.style.height = `${heightAndWidth}vw`;
         rows.appendChild(cells); 
     }
     container.appendChild(rows);
